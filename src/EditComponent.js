@@ -1,30 +1,22 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-class CommentForm extends Component {
+class EditComponent extends Component {
   handleSubmit = e => {
     e.preventDefault(); // ไม่ให้ browser refresh หน้า
     const name = this.getName.value;
     const message = this.getMessage.value;
     const data = {
-      id: new Date(),
       name,
       message,
       editing: false
     };
-    this.getName.value = "";
-    this.getMessage.value = "";
-    this.props.dispatch({
-      type: "ADD_COMMENT",
-      data
-    });
-    console.log(data);
   };
 
   render() {
     return (
       <div>
-        <h1>Add Comment</h1>
+        <h1>Edit Comment</h1>
         <form onSubmit={this.handleSubmit}>
           <input
             required
@@ -43,11 +35,11 @@ class CommentForm extends Component {
           />
           <br />
           <br />
-          <button>Submit</button>
+          <button>Update</button>
         </form>
       </div>
     );
   }
 }
 
-export default connect()(CommentForm);
+export default connect()(EditComponent);

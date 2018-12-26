@@ -6,12 +6,16 @@ class Comment extends React.Component {
     this.props.dispatch({ type: "DELETE_COMMENT", id: this.props.comment.id });
   };
 
+  handleEdit = () => {
+    this.props.dispatch({ type: "EDIT_COMMENT", id: this.props.comment.id });
+  };
+
   render() {
     return (
       <div>
         <h2>{this.props.comment.name}</h2>
         <p>{this.props.comment.message}</p>
-        <button>Edit</button>
+        <button onClick={this.handleEdit}>Edit</button>
         <button onClick={this.handleDelete}>Delete</button>
       </div>
     );

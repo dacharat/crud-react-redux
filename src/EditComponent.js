@@ -11,17 +11,22 @@ class EditComponent extends Component {
       message,
       editing: false
     };
+    this.props.dispatch({
+      type: 'UPDATE_COMMENT',
+      id: this.props.comment.id,
+      data: data
+    })    
   };
 
   render() {
     return (
       <div>
-        <h1>Edit Comment</h1>
         <form onSubmit={this.handleSubmit}>
           <input
             required
             type="text"
             placeholder="Enter your name"
+            defaultValue={this.props.comment.name}
             ref={input => (this.getName = input)}
           />
           <br />
@@ -31,6 +36,7 @@ class EditComponent extends Component {
             row="5"
             cols="28"
             placeholder="Enter your message"
+            defaultValue={this.props.comment.message}
             ref={input => (this.getMessage = input)}
           />
           <br />
